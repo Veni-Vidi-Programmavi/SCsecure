@@ -32,8 +32,13 @@ def receive_data():
     
 @app.route('/data', methods=['GET'])
 def get_data():
-    # Retourner les données en mémoire
-    return jsonify(received_data), 200
+    try:
+        with open("data_store.json", "r", encoding="utf-8") as f:
+            lines = f.readlines()
+            data = [json.loads(line) for line in lines]
+        return jsonify(data), 200
+    except FileNotFoundError:
+        return jsonify([]), 200
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
