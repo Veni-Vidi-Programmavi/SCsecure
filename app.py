@@ -29,6 +29,11 @@ def receive_data():
         f.write(json.dumps(entry) + "\n")
 
     return jsonify({"message": "Données reçues", "entry": entry}), 200
+    
+@app.route('/data', methods=['GET'])
+def get_data():
+    # Retourner les données en mémoire
+    return jsonify(received_data), 200
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
