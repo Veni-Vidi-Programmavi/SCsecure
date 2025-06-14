@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Add your description here"
 authors = ["Veni-Vidi-Programmavi <pilouhenry@icloud.com"]
 packages = [{ include = "app" }]
-requires-python = ">=3.11,<4.0"
+package-mode = false
 dependencies = [
     "email-validator>=2.2.0",
     "flask-cors>=6.0.1",
